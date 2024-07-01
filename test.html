@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Heatmap Example</title>
+  <script src="heatmap.js"></script>
+  <style>
+    #heatmapContainer {
+      width: 80vw;  /* Example width (80% of viewport width) */
+      height: 60vh; /* Example height (60% of viewport height) */
+      position: relative;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="heatmapContainer"></div>
+  <script>
+    // Initialize the heatmap
+    var heatmapInstance = h337.create({
+      container: document.getElementById('heatmapContainer')
+    });
+
+    // Original data points with relative coordinates
+    var relativeDataPoints = [
+      { x: 0.125, y: 0.25, value: 50 },  // 12.5% from left, 25% from top
+      { x: 0.5, y: 0.5, value: 70 },     // 50% from left, 50% from top
+      { x: 0.875, y: 0.833, value: 90 }  // 87.5% from left, 83.3% from top
+    ];
+
+    // Function to convert relative points to absolute points
+    function getAbsoluteData(container, relativePoints) {
+      var width = container.offsetWidth;
+      var height = container.offsetHeight;
+      return relativePoints.map(point => ({
+        x: Math.round(point.x * width),
+        y: Math.round(point.y * height),
+        value: point.value
+      }));
+    }
+
+    // Function to update the heatmap data
+    function updateHeatmap() {
+      var container = document.getElementById('heatmapContainer');
+      var data = {
+        max: 100,
+        data: getAbsoluteData(container, relativeDataPoints)
+      };
+      heatmapInstance.setData(data);
+    }
+
+    // Initial update
+    updateHeatmap();
+
+    // Update heatmap on window resize
+    window.addEventListener('resize', updateHeatmap);
+  </script>
+</body>
+</html>

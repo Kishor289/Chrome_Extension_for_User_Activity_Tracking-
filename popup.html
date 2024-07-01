@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Overlayy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width:300px;
+      margin: 0;
+      padding: 20px; /* Add some padding for better spacing */
+      border-radius: 20px;
+      border: none;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 34px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 4px; /* Add margin for spacing */
+    }
+    .title h1 {
+      margin-right: 15px;
+      color: #2196F3;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .main-content h2 {
+      margin: 10px 0;
+    }
+    #timeSpent {
+            font-size: 18px;
+    }
+   
+  </style>
+</head>
+<body>
+  <div class="title">
+    <h1>Overlayy</h1>
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggleButton">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <div class="main-content">
+    <div id="timeSpent">0h 0m 0s</div>
+    <div class="summary">
+      <h2>Narrative Summary</h2>
+      <p>
+      ebeufbekhekbcuiejnclnjcecee
+      </p>
+    </div>
+    
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

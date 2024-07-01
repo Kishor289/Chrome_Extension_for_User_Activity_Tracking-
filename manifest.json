@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "My Chrome Extension",
+    "description": "This extension changes the background color of the current page.",
+    "version": "1.0",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "sidePanel",
+      "storage"
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "side_panel": {
+    "default_path": "sidepanel.html"
+    },
+
+    "content_scripts" : [
+        {
+            "matches" :[
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": ["contentScript.js"]
+        }
+    ],
+
+    "icons": {
+      "16": "icon16.png"
+    },
+    "background" : {
+        "service_worker" : "service_worker.js"
+    },
+
+    "host_permissions" : [
+        "http://*/*",
+        "https://*/*"
+    ]
+  }
+  
